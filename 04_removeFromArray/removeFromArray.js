@@ -1,9 +1,8 @@
 const removeFromArray = function(array, ...itemsToRemove) {
-    array = array.filter(Number);
+    itemsToRemove = itemsToRemove.filter((item) => array.includes(item));
+
     for (let item in itemsToRemove) {
-        if (array.includes(item)) {
-            array.splice(array.indexOf(itemsToRemove[item]),1);
-        }
+        array.splice(array.indexOf(itemsToRemove[item]),1);
     }
     return array;
 };
