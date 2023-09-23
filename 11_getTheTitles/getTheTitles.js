@@ -1,9 +1,5 @@
-const getTheTitles = function(...books) {
-    let array2 = [];
-    for (book in books) {
-        array2.push(books.find((element) => `${book}`));
-    }
-    return array2;
+const getTheTitles = function(books) {
+    return books.map(book => book.title);
 };
 
 // Do not edit below this line
