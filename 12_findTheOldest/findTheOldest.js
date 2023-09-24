@@ -1,10 +1,18 @@
 const findTheOldest = function(people) {
     const currentYear = new Date().getFullYear();
-    people.forEach(person => {
-        const age = person.yearOfDeath ? person.yearOfDeath - person.yearOfBirth :  currentYear - person.yearOfBirth;
-        Object.defineProperty(person, 'age', {value: age, writable: false,});
+
+    people = people.map(function(person) {
+        person.age = person.yearOfDeath ? person.yearOfDeath - person.yearOfBirth :  currentYear - person.yearOfBirth;
+        return person;
     })
-    return people;
+
+    const oldest = people.sort(function(a,b){
+        const previous = a.age;
+        const next = b.age;
+        return previous > next ? -1 : 1;
+    })
+
+    return oldest[0];
 };
 
 // Do not edit below this line
